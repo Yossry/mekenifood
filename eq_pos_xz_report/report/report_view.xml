@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<report id="action_print_x_report" string="X Report" model="wizard.xz.report"
+			report_type="qweb-pdf" file="eq_pos_xz_report.x_report_template"
+			name="eq_pos_xz_report.x_report_template" />
+
+		<report id="action_print_z_report" string="Z Report" model="wizard.xz.report"
+			report_type="qweb-pdf" file="eq_pos_xz_report.z_report_template"
+			name="eq_pos_xz_report.z_report_template" />
+
+	</data>
+</odoo>

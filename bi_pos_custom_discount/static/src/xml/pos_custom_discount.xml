@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="pos_custom_discount" inherit_id="point_of_sale.template" xml:space="preserve">
+
+<!--<Discount POPUP>-->
+	<t t-name="PosCustomDiscountPopup" owl="1">
+	<div class="modal-dialog">
+	    <div class="popup popup-confirm" style="height: 300px !important;">
+		<p class="title">Discounts</p>
+		<div class="body">
+			<div class='div-container'>
+				<span class='product custom-discount' t-foreach="env.pos.pos_custom_discount || []" t-as="item" t-att-id="item.id" t-on-click="click_on_discount">
+					<div class="product-img raghav" t-att-id="item.id" >
+						<img src='/bi_pos_custom_discount/static/src/img/discount.png' alt="Discount" />
+					</div>
+					<div class="product-name" style="margin-bottom: 7px;font-size: 15px;color: #ff0036;">
+						<strong><t t-esc="item.discount+'%'"/></strong><br/>
+						<strong><t t-esc="item.name"/></strong>
+					</div>
+				</span>
+			</div>
+		</div>
+		
+		<div class="footer">
+			
+		    <div class="button cancel" t-on-click="go_back_screen">
+		        Cancel 
+		    </div>
+		    
+		</div>
+	    </div>
+	</div>
+	</t>
+	
+	<!-- Custom Discount Popup-->
+	
+	
+	
+</templates>
+  	
+  	

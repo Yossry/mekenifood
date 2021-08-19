@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<!-- Add custom js for pos_loyalty_odoo -->	    
+		<template id="assets_for_pos_loyalty_odoo" inherit_id="point_of_sale.assets">
+			<xpath expr="." position="inside">
+				<script type="text/javascript" src="/pos_loyalty_odoo/static/src/js/pos.js"/>
+				<script type="text/javascript" src="/pos_loyalty_odoo/static/src/js/OrderWidgetExtended.js"/>
+				<script type="text/javascript" src="/pos_loyalty_odoo/static/src/js/LoyaltyButtonWidget.js"/>
+				<script type="text/javascript" src="/pos_loyalty_odoo/static/src/js/LoyaltyPopupWidget.js"/>
+			</xpath>
+		</template>		
+	</data>
+</odoo>
