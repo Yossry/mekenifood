@@ -1,0 +1,22 @@
+
+Version 14.0.1.0 : (19-01-20)
+		- Made partner's loyalty_points field as a compute field based on history.
+		- Also perform changes for POS regarding partner loyalty field.
+		- Add init_from_JSON() in pos to store data.
+		- Add  create="0" and edit="0" in  loyalty history tree and form view , so no one can change it or create it from backend.
+		- Update loyalty point calculation.
+		- Update security file.
+
+Version 14.0.1.1 : (21/01/21)
+		- Generate warnings at redeem button click if customer is not set / customer has no sufficient loyalty points.
+
+Version 14.0.1.2 : (20/05/21)
+		- Made product field mandatory in loyalty configuration.
+		- Hide Loyalty count from orderwidget if no point is calculated.
+		- Refresh Client to get latest loyalty values.
+
+Version 14.0.1.3 : (02/06/21)
+		- Update redeemed points from partner , to show correct value in receipt.
+
+Version 14.0.1.4 : (17/06/21)
+	- now loyalty points and its amount is now work with decimal points

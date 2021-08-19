@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    	    
+        <template id="assets_pos_custom_discount" inherit_id="point_of_sale.assets">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/bi_pos_custom_discount/static/src/js/pos_custom_discount.js"/>
+                <script type="text/javascript" src="/bi_pos_custom_discount/static/src/js/NumpadWidget.js"/>
+                <script type="text/javascript" src="/bi_pos_custom_discount/static/src/js/PosCustomDiscountPopup.js"/>
+                <link rel="stylesheet" href="/bi_pos_custom_discount/static/src/css/custom_discount_popup.css" id="pos-stylesheet-custom-discount"/>
+            </xpath>
+        </template>
+        
+        
+	<record id="pos_custom_discount_tree_view" model="ir.ui.view">
+		<field name="name">pos.custom.discount.tree.view</field>
+		<field name="model">pos.custom.discount</field>
+		<field name="arch" type="xml">
+		<tree string="POS Custom Discount">													
+			<field name="name"/>				
+			<field name="discount"/>	
+			<field name="description"/>
+		</tree>
+		</field>
+	</record>
+	
+	<record id="pos_custom_discount_form_view" model="ir.ui.view">
+		<field name="name">pos.custom.discount.form.view</field>
+		<field name="model">pos.custom.discount</field>
+		<field name="arch" type="xml">
+		<form string="POS Custom Discount">
+			<sheet>
+				<div>
+				<group>
+					<field name="name"/>				
+					<field name="discount"/>
+				</group>
+				</div><br/><br/>
+				<div>
+				<group>	
+					<field name="description"/>
+				</group>
+				</div>
+			</sheet>
+		</form>
+		</field>
+	</record>
+	
+	<record id="inherit_view_pos_config_custom_discount" model="ir.ui.view">
+		<field name="name">inherit.view.pos.config.custom.discount</field>
+		<field name="model">pos.config</field>
+		<field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//div[3]" position="after">
+
+				<h2>Custom Discount Configuration in POS</h2>
+				<div class="row mt16 o_settings_container" >
+					<div class="col-xs-12 col-md-6 o_setting_box">
+						<div class="o_setting_left_pane">
+							<field name="allow_custom_discount" />
+						</div>
+						<div class="o_setting_right_pane">
+							<label for="allow_custom_discount" string="Custom Discount "/>
+							<div class="text-muted">
+								Add Custom discount to POS orders.
+							</div>
+							
+							<div class="content-group mt16">
+								<group><field name="custom_discount_ids" widget="many2many_tags" string="Discounts" attrs="{'invisible': [('allow_custom_discount','=',False)]}"/></group>
+							</div>
+						</div>
+						
+					</div>	
+				</div>
+			</xpath>
+		</field>
+	</record>
+	
+	
+	<record model="ir.actions.act_window" id="action_pos_custom_discount">
+		<field name="name">POS Custom Discount</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">pos.custom.discount</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+	
+	<menuitem parent="point_of_sale.menu_point_config_product" action="action_pos_custom_discount" id="menu_pos_copan_setting"
+            sequence="30" name="POS Custom Discount"/>
+	
+        
+    </data>
+</odoo>

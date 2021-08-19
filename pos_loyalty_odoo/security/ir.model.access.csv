@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_pos_redeem_rule_manager,pos.redeem.rule.manager,model_pos_redeem_rule,point_of_sale.group_pos_manager,1,1,1,1
+access_pos_redeem_rule_user,pos.redeem.rule.user,model_pos_redeem_rule,point_of_sale.group_pos_user,1,1,1,0
+access_pos_loyalty_history_manager,pos.loyalty.history.manager,model_pos_loyalty_history,point_of_sale.group_pos_manager,1,1,1,1
+access_pos_loyalty_history,pos.loyalty.history.user,model_pos_loyalty_history,point_of_sale.group_pos_user,1,1,1,0
+access_pos_loyalty_setting_manager,pos.loyalty.setting.manager,model_pos_loyalty_setting,point_of_sale.group_pos_manager,1,1,1,1
+access_pos_loyalty_setting,pos.loyalty.setting.user,model_pos_loyalty_setting,point_of_sale.group_pos_user,1,1,1,1

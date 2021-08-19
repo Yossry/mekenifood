@@ -1,0 +1,9 @@
+Date 25th jan 2021
+version :- 14.0.0.1
+issue solve:-
+	-module functionality change , now when enable authorize employee selected then access according to employee or if its disable then its working according to user access.
+
+Date 29th jan 2021
+version 14.0.0.2
+issue solve:-
+	- module compitible with pos_restaurent.

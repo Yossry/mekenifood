@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<record id="wizard_x_report_form_view" model="ir.ui.view">
+		<field name="name">wizard.xz.report.form</field>
+		<field name="model">wizard.xz.report</field>
+		<field name="arch" type="xml">
+			<form>
+				<sheet>
+					<group>
+						<field name="session_ids" widget="many2many_tags"
+							domain="[('state', '!=', 'closed')]" />
+					</group>
+					<group col="4">
+						<field name="start_date" />
+						<field name="end_date" />
+					</group>
+					<group col="4">
+						<field name="show_top_saling_product" />
+						<field name="display_category_product" />
+						<field name="no_of_product_disp"
+							attrs="{'invisible':[('show_top_saling_product','=',False)]}" />
+					</group>
+					<footer>
+						<button name="btn_print_x_report" type="object" string="Print"
+							class="btn-primary" />
+					</footer>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record id="action_x_report" model="ir.actions.act_window">
+		<field name="name">X Report</field>
+		<field name="res_model">wizard.xz.report</field>
+		<field name="view_mode">form</field>
+		<field name="view_id" ref="eq_pos_xz_report.wizard_x_report_form_view" />
+		<field name="target">new</field>
+	</record>
+
+	<menuitem id="menu_x_report" action="action_x_report"
+		parent="point_of_sale.menu_point_rep" />
+
+	<record id="wizard_z_report_form_view" model="ir.ui.view">
+		<field name="name">wizard.xz.report.form</field>
+		<field name="model">wizard.xz.report</field>
+		<field name="arch" type="xml">
+			<form>
+				<group>
+					<field name="session_ids" widget="many2many_tags" domain="[('state', '=', 'closed')]" />
+				</group>
+				<group col="4">
+					<field name="start_date" />
+					<field name="end_date" />
+				</group>
+				<group col="4">
+					<field name="show_top_saling_product" />
+					<field name="display_category_product" />
+					<field name="no_of_product_disp"
+						attrs="{'invisible':[('show_top_saling_product','=',False)]}" />
+				</group>
+				<footer>
+					<button name="btn_print_z_report" type="object" string="Print"
+						class="btn-primary" />
+				</footer>
+			</form>
+		</field>
+	</record>
+
+	<record id="action_z_report" model="ir.actions.act_window">
+		<field name="name">Z Report</field>
+		<field name="res_model">wizard.xz.report</field>
+		<field name="view_mode">form</field>
+		<field name="view_id" ref="eq_pos_xz_report.wizard_z_report_form_view" />
+		<field name="target">new</field>
+	</record>
+
+	<menuitem id="menu_z_report" action="action_z_report"
+		parent="point_of_sale.menu_point_rep" />
+
+</odoo>

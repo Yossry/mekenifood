@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<template id="z_report_template">
+			<t t-call="web.html_container">
+				<t t-foreach="docs" t-as="session">
+					<t t-call="web.internal_layout">
+						<div class="page">
+							<t t-set="new_res" t-value="session.get_total_session_discount(data)" />
+							<div class="col-md-12 text-center">
+								<h4>
+									Z Report
+								</h4>
+								<h5>
+									Session:
+									<span t-field="session.name" />
+								</h5>
+								<br />
+							</div>
+							<table border="5" class="table table-sm o_main_table">
+								<tr>
+									<td class="font-weight-bold">Point of Sale</td>
+									<td>
+										<span t-esc="session.config_id.name" />
+									</td>
+
+									<td class="font-weight-bold">Opening Balance</td>
+									<td class="text-right">
+										<span t-field="session.cash_register_balance_start" />
+									</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold">Cashier</td>
+									<td>
+										<span t-field="session.user_id.name" />
+									</td>
+									<td class="font-weight-bold">Closing Balance</td>
+									<td class="text-right">
+										<span t-field="session.cash_register_balance_end_real" />
+									</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold">Opening Time</td>
+									<td>
+										<span t-field="session.start_at" />
+									</td>
+									<td class="font-weight-bold">Total Sales</td>
+									<td class="text-right">
+										<span t-field="session.total_payments_amount"
+											t-options="{'widget': 'monetary', 'display_currency': session.currency_id}" />
+									</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold">Closing Time</td>
+									<td>
+										<span t-field="session.stop_at" />
+									</td>
+									<td class="font-weight-bold">Total Tax</td>
+									<td class="text-right">
+										<span t-esc="new_res.get('session_taxes')"
+											t-options="{'widget': 'monetary', 'display_currency': session.currency_id}" />
+									</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold">Status</td>
+									<td>
+										<span t-field='session.state' />
+									</td>
+									<td class="font-weight-bold">Total Discount</td>
+									<td class="text-right">
+										<span t-esc="new_res.get('session_discounts')"
+											t-options="{'widget': 'monetary', 'display_currency': session.currency_id}" />
+									</td>
+								</tr>
+							</table>
+							<br />
+							<div class="col-md-12">
+								<h5 class="text-center">
+									Payments
+								</h5>
+							</div>
+							<table class="table table-sm o_main_table">
+								<tr>
+									<th>Payment Method</th>
+									<th class="text-right">Total Amount</th>
+								</tr>
+								<tr t-foreach="new_res.get('session_all_payments')" t-as="each_payment">
+									<td>
+										<span t-esc="each_payment.get('name')" />
+									</td>
+									<td class="text-right">
+										<span t-esc="each_payment.get('total')"
+											t-options="{'widget': 'monetary', 'display_currency': session.currency_id}" />
+									</td>
+								</tr>
+							</table>
+							<br />
+							<div class="row">
+								<t t-set="summary_show" t-value="'onlyone'" />
+								<t
+									t-if="data.get('show_top_saling_product') and data.get('display_category_product')">
+									<t t-set="summary_show" t-value="'both'" />
+								</t>
+								<div t-attf-class="{{ 'col-6' if summary_show == 'both' else 'col-12' }}"
+									t-if="data.get('show_top_saling_product')">
+									<h5 class="text-center">
+										Top Selling Product
+									</h5>
+									<table class="table table-sm o_main_table">
+										<tr>
+											<th>Name</th>
+											<th class="text-right">Quantity</th>
+											<th class="text-right">Total Sales</th>
+										</tr>
+										<tr t-foreach="new_res.get('top_selling_products')" t-as="products">
+											<td>
+												<span t-esc="products.get('name')" />
+											</td>
+											<td class="text-right">
+												<span t-esc="products.get('qty')" />
+											</td>
+											<td class="text-right">
+												<span t-esc="products.get('sales')"
+													t-options="{'widget': 'monetary', 'display_currency': session.currency_id}" />
+											</td>
+										</tr>
+									</table>
+								</div>
+								<div t-attf-class="{{ 'col-6' if summary_show == 'both' else 'col-12' }}"
+									t-if="new_res.get('display_category_product')">
+									<h5 class="text-center">
+										Display Sales by Category
+									</h5>
+									<table class="table table-sm o_main_table">
+										<tr>
+											<th>Category</th>
+											<th class="text-right">Total</th>
+										</tr>
+										<tr t-foreach="new_res.get('display_category_product')"
+											t-as="category">
+											<td>
+												<span t-esc="category.name" />
+											</td>
+											<td class="text-right">
+												<span t-esc="category_value"
+													t-options="{'widget': 'monetary', 'display_currency': session.currency_id}" />
+											</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+						</div>
+					</t>
+				</t>
+			</t>
+		</template>
+	</data>
+</odoo>
