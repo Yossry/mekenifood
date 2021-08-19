@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_quantity_discount,access_quantity_discount,model_quantity_discount,base.group_user,1,1,1,1
+access_quantity_discount_amt,access_quantity_discount_amt,model_quantity_discount_amt,base.group_user,1,1,1,1
+access_pos_promotion,access_pos_promotion,model_pos_promotion,base.group_user,1,1,1,1
+access_get_discount,access_get_discount,model_get_discount,base.group_user,1,1,1,1
+access_pos_conditions,access_pos_conditions,model_pos_conditions,base.group_user,1,1,1,1
+access_discount_multi_products,access_discount_multi_products,model_discount_multi_products,base.group_user,1,1,1,1
+access_discount_multi_categories,access_discount_multi_categories,model_discount_multi_categories,base.group_user,1,1,1,1
+access_discount_above_price,access_discount_above_price,model_discount_above_price,base.group_user,1,1,1,1
+access_day_week,access_day_week,model_day_week,base.group_user,1,0,0,0
+access_product_brand,access_product_brand,model_product_brand,base.group_user,1,1,1,1

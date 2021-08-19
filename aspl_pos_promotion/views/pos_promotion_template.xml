@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="aces_pos_promotion_index" inherit_id="point_of_sale.assets">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/aspl_pos_promotion/static/src/js/models.js"/>
+                <script type="text/javascript"
+                        src="/aspl_pos_promotion/static/src/js/Screens/ProductScreen/ProductScreen.js"/>
+            </xpath>
+        </template>
+
+    </data>
+</odoo>
